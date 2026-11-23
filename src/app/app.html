@@ -1,0 +1,32 @@
+<main style="display: grid; place-items: center; min-height: 100vh; font-family: sans-serif; text-align: center;">
+  <div>
+    <h1>MetroGnome</h1>
+    <p style="font-size: 3rem; margin: 1rem 0;">{{ bpm() }} BPM</p>
+
+    <div style="display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 1.5rem;">
+      <label 
+        for="bpm-input"
+        style="display:block; margin-bottom: 0.35rem; font-size: 0.9rem"
+      >
+        BPM 40 - 240
+      </label>
+      <input 
+        id="bpm-input"
+        type="number"
+        min="40"
+        max="240"
+        [value]="bpm()"
+        (change)="setBpm(($any($event.target)).valueAsNumber)"
+        style="width: 6rem; padding: 0.4rem; font-size: 1.1rem; text-align: center;"
+      />
+      <button type="button" (click)="changeBpm(-5)">-5</button>
+      <button type="button" (click)="changeBpm(-1)">-1</button>
+      <button type="button" (click)="changeBpm(1)">+1</button>
+      <button type="button" (click)="changeBpm(5)">+5</button>
+    </div>
+
+    <button type="button" (click)="togglePlay()" style="padding: 0.75rem 2rem; font-size: 1.1rem;">
+      {{ playing() ? 'Stop' : 'Play' }}
+    </button>
+  </div>
+</main>
